@@ -14,9 +14,6 @@ interface CurrencyInfoDao {
     @Query("SELECT * FROM currency_table")
     fun getCurrencyInfo(): List<CurrencyInfoDbModel>
 
-    @Query("DELETE FROM currency_table")
-    suspend fun clearCache()
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCurrencyInfo(currencyList: List<CurrencyInfoDbModel>)
 }
