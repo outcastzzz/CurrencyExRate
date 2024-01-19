@@ -65,12 +65,6 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun getCurrency() {
-        viewModelScope.launch {
-            _currencyListDate.value = getCurrencyInfoUseCase.getCurrency()
-        }
-    }
-
     fun getClickedItemName(name: String) {
         _currentName.value = name
     }

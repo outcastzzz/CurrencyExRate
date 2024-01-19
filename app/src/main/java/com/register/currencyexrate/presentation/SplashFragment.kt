@@ -53,7 +53,7 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity(), viewModelFactory)[MainViewModel::class.java]
-        viewModel.getCurrency()
+        viewModel.getCurrencyInfoNow()
         viewModel.currencyListDate.observe(viewLifecycleOwner) { data ->
             Log.d("CurrencyFragment", "currencyList has been observed with data: $data")
             if(data == null) {

@@ -89,7 +89,7 @@ class ListOfCurrencyFragment : Fragment() {
                     selectedMonth == currentDate.get(Calendar.MONTH) &&
                     selectedDay == currentDate.get(Calendar.DAY_OF_MONTH)
                 ) {
-                    viewModel.getCurrency()
+                    viewModel.getCurrencyInfoNow()
                 } else {
                     val yearStr = selectedYear.toString()
                     val monthStr = (selectedMonth + 1).toString().padStart(2, '0')
