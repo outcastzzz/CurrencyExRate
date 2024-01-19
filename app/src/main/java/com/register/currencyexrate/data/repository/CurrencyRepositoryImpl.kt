@@ -19,8 +19,7 @@ class CurrencyRepositoryImpl @Inject constructor(
         return withContext(Dispatchers.IO) {
             val response = apiService.getCurrencyData()
             when (response.code()) {
-                404 -> emptyList()
-                else -> {
+                in 200..300 -> {
                     val list = mapper.mapJsonContainerToListCurrencyInfo(response.body()!!)
                     val dbModelList = list.map(mapper::mapDtoToDbModel)
                     currencyDao.insertCurrencyInfo(dbModelList)
@@ -28,6 +27,8 @@ class CurrencyRepositoryImpl @Inject constructor(
                     val result = entityList.map(mapper::mapDbModelToEntity)
                     result
                 }
+                in 400..500 -> emptyList()
+                else -> emptyList()
             }
         }
     }
@@ -40,8 +41,7 @@ class CurrencyRepositoryImpl @Inject constructor(
         return withContext(Dispatchers.IO) {
             val response = apiService.getCurrencyWithDate(year, month, day)
             when (response.code()) {
-                404 -> emptyList()
-                else -> {
+                in 200..300 -> {
                     val list = mapper.mapJsonContainerToListCurrencyInfo(response.body()!!)
                     val dbModelList = list.map(mapper::mapDtoToDbModel)
                     currencyDao.insertCurrencyInfo(dbModelList)
@@ -49,11 +49,10 @@ class CurrencyRepositoryImpl @Inject constructor(
                     val result = entityList.map(mapper::mapDbModelToEntity)
                     result
                 }
+                in 400..500 -> emptyList()
+                else -> emptyList()
             }
         }
     }
 
-    override suspend fun clearCache() {
-        currencyDao.clearCache()
-    }
 }
