@@ -14,6 +14,4 @@ interface CurrencyRepository {
         day: String
     ): List<CurrencyInfo>
 
-    suspend fun clearCache()
-
 }
