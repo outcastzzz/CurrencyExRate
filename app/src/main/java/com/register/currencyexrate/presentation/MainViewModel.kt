@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.register.currencyexrate.domain.entities.CurrencyInfo
-import com.register.currencyexrate.domain.useCases.ClearCacheUseCase
 import com.register.currencyexrate.domain.useCases.GetCurrencyInfoUseCase
 import com.register.currencyexrate.domain.useCases.GetCurrencyWithDateUseCase
 import kotlinx.coroutines.launch
@@ -15,7 +14,6 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val getCurrencyInfoUseCase: GetCurrencyInfoUseCase,
     private val getCurrencyWithDateUseCase: GetCurrencyWithDateUseCase,
-    private val clearCacheUseCase: ClearCacheUseCase
 ): ViewModel() {
 
     private val _currentCharCode = MutableLiveData<String>()
@@ -77,15 +75,8 @@ class MainViewModel @Inject constructor(
         _currentCount.value = count
     }
 
-    private fun clearCache() {
-        viewModelScope.launch {
-            clearCacheUseCase.clearCache()
-        }
-    }
-
     override fun onCleared() {
         super.onCleared()
-        clearCache()
         _currencyListDate.value = emptyList()
         _currentCount.value = 0.0
         _currentName.value = ""
