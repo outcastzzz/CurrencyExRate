@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CurrencyExRate</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="currency_list_header">Валюты</string>
+    <string name="currency_list_et_hint">Дата</string>
+    <string name="currency_info_rate_text">Курс</string>
+    <string name="currency_info_rub_hint">RUB</string>
+    <string name="splash_screen_text">MONEY</string>
+
+</resources>

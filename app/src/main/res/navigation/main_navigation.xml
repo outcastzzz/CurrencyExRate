@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.register.currencyexrate.presentation.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_listOfCurrencyFragment"
+            app:destination="@id/listOfCurrencyFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/listOfCurrencyFragment"
+        android:name="com.register.currencyexrate.presentation.ListOfCurrencyFragment"
+        android:label="fragment_list_of_currency"
+        tools:layout="@layout/fragment_list_of_currency" >
+        <action
+            android:id="@+id/action_listOfCurrencyFragment_to_currencyInfoFragment"
+            app:destination="@id/currencyInfoFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/currencyInfoFragment"
+        android:name="com.register.currencyexrate.presentation.CurrencyInfoFragment"
+        android:label="fragment_currency_info"
+        tools:layout="@layout/fragment_currency_info" >
+        <action
+            android:id="@+id/action_currencyInfoFragment_to_listOfCurrencyFragment"
+            app:destination="@id/listOfCurrencyFragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+</navigation>
